@@ -6,9 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sketchpad</title>
     <link rel="stylesheet" href="index.css">
-    <script src="index.js"></script>
+    <script src="index.js" defer></script>
 </head>
 <body>
-    
+    <div class="container">
+        <h1>Kho's Sketchpad</h1>
+        <div class="containerWrap">
+            <div class="toolsWrap">
+                <input type="color" name="color" value="#ff0000" id="color">
+                <button class="btnColor">Color Mode</button>
+                <button class="btnRainbox">Rainbow Mode</button>
+                <button class="btnErase">Eraser</button>
+                <button class="btnClear">Clear</button>
+                <div class="slideContainer">
+                    <p>Squares: <span id="squares"></span></p>
+                    <input id="range" type="range"  min="16" max="64" value="50" class="pixels">
+                </div>
+            </div>
+            <div class="sketchpadWrap">sketchpad</div>
+        </div>
+    </div>
 </body>
 </html>
