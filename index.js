@@ -20,6 +20,7 @@ const sketchpadLength = 512
 let totalNumberOfSquares = numberOfSquares * numberOfSquares
 
 
+
 // Set the length of each square
 const setSquareLength = () => {
     squareLength = 

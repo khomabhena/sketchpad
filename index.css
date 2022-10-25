@@ -72,6 +72,17 @@ button {
     width: 512px;
     height: 512px;
     background-color: rgb(255, 255, 255);
-    border: 1px solid rgba(0, 0, 0, 0.1);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: flex-start;
+}
+
+.box {
+    display: flex;
+    width: 16px;
+    height: 16px;
+    background-color: red;
 }
