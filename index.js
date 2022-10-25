@@ -176,7 +176,7 @@ btnErase.addEventListener('click', e => {
         isErase = true
         btnErase.classList.toggle('activeButton')
     }
-    
+    isMouseDown = false
 })
 
 const btnRainbow = document.querySelector('.btnRainbow')
@@ -188,6 +188,7 @@ btnRainbow.addEventListener('click', e => {
         isRandomColor = true
         btnRainbow.classList.toggle('activeButton')
     }
+    isMouseDown = false
 })
 
 console.log(getRandomColor())
