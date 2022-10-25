@@ -11,15 +11,17 @@
 // Clear the current squares added
 // Add the squares to the sketchpad wrap
 
+// Add listener for mouse down and mouse up events
 
 // Add event listeners to the squares
 // If right click is pressed and hover, 
 // change the background color of the div
-let color = ''
+let color = '#000000'
 let numberOfSquares = 16
 let squareLength = 32
 const sketchpadLength = 512
 let totalNumberOfSquares = numberOfSquares * numberOfSquares
+let isMouseDown = false
 
 
 
@@ -42,12 +44,28 @@ const createSquareDiv = () => {
     const square = document.createElement('div')
     square.setAttribute('style', `
     width: ${squareLength}px; 
-    height: ${squareLength}px;
-    background-color: red; `)
+    height: ${squareLength}px; `)
     
     return square
 }
 
+
+
+// Add event listeners to the squares
+const addSquaresEventlistener = () => {
+    const sketchpad = document.querySelector('.sketchpadWrap')
+    const squares = sketchpad.querySelectorAll('div')
+    squares.forEach(square => {
+        square.addEventListener('mouseover', e => {
+            if (isMouseDown) {
+                square.setAttribute('style', `
+                width: ${squareLength}px; 
+                height: ${squareLength}px;
+                background-color: ${color}; `)
+            }
+        })
+    })
+}
 
 
 // Add squares to the sketchpad
@@ -56,8 +74,12 @@ const addSquaresToSketchpad = () => {
 
     // Get the created div and append it to the sketchpad
     for (let i = 0; i < totalNumberOfSquares; i++) {
-        sketchpad.appendChild(createSquareDiv())
+        const child = createSquareDiv()
+        sketchpad.appendChild(child)
     }
+
+    // Call function to add event listeners for the squares
+    addSquaresEventlistener()
 }
 
 
@@ -118,3 +140,9 @@ const setNumberOfSquares = () => {
     setSquareLength()
 }
 setNumberOfSquares()
+
+
+
+// Set mouse down and up listeners
+document.body.onmousedown = () => isMouseDown = true
+document.body.onmouseup = () => isMouseDown = false
