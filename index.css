@@ -78,10 +78,10 @@ button {
     flex-direction: row;
     flex-wrap: wrap;
     align-content: flex-start;
+    /* gap: 1px; */
 }
 
 .box {
-    display: flex;
     width: 16px;
     height: 16px;
     background-color: red;
