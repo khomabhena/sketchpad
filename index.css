@@ -41,6 +41,12 @@ button {
     border-radius: 8px;
     border: 1px solid grey;
     box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.activeButton {
+    background-color: rgb(40, 57, 71);
+    color: white;
 }
 
 #color {
@@ -84,5 +90,5 @@ button {
 .box {
     width: 16px;
     height: 16px;
-    background-color: red;
+    background-color: rgb(255, 0, 0);
 }

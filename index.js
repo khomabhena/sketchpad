@@ -22,6 +22,8 @@ let squareLength = 32
 const sketchpadLength = 512
 let totalNumberOfSquares = numberOfSquares * numberOfSquares
 let isMouseDown = false
+let isErase = false
+let isRandomColor = false
 
 
 
@@ -49,6 +51,25 @@ const createSquareDiv = () => {
     return square
 }
 
+// Get random color
+const getRandomColor = () => {
+    const r = Math.floor(Math.random() * 256)
+    const b = Math.floor(Math.random() * 256)
+    const g = Math.floor(Math.random() * 256)
+
+    return `rgb(${r}, ${g}, ${b})`
+}
+
+
+
+// Change color
+const changeColor = (square) => {
+    square.setAttribute('style', `
+        width: ${squareLength}px; 
+        height: ${squareLength}px;
+        background-color: ${isErase == true ? 'rgb(240, 240, 240)' : 
+        isRandomColor === true ? getRandomColor() : color}; `)
+}
 
 
 // Add event listeners to the squares
@@ -58,10 +79,7 @@ const addSquaresEventlistener = () => {
     squares.forEach(square => {
         square.addEventListener('mouseover', e => {
             if (isMouseDown) {
-                square.setAttribute('style', `
-                width: ${squareLength}px; 
-                height: ${squareLength}px;
-                background-color: ${color}; `)
+                changeColor(square)
             }
         })
     })
@@ -146,3 +164,30 @@ setNumberOfSquares()
 // Set mouse down and up listeners
 document.body.onmousedown = () => isMouseDown = true
 document.body.onmouseup = () => isMouseDown = false
+
+document.querySelector('.btnClear').addEventListener('click', e => clearSquaresInSketchpad())
+
+const btnErase = document.querySelector('.btnErase')
+btnErase.addEventListener('click', e => {
+    if (isErase) {
+        isErase = false
+        btnErase.classList.toggle('activeButton')
+    } else {
+        isErase = true
+        btnErase.classList.toggle('activeButton')
+    }
+    
+})
+
+const btnRainbow = document.querySelector('.btnRainbow')
+btnRainbow.addEventListener('click', e => {
+    if (isRandomColor) {
+        isRandomColor = false
+        btnRainbow.classList.toggle('activeButton')
+    } else {
+        isRandomColor = true
+        btnRainbow.classList.toggle('activeButton')
+    }
+})
+
+console.log(getRandomColor())
